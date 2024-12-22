@@ -20,7 +20,7 @@ class PicoRenderer(mistune.HTMLRenderer):
     def list_item(self, text):
         return f'<li class="li">{text}</li>\n'
 
-    def block_quote(self, text, language="python"):
+    def block_quote(self, text, language="text"):
         lexer = get_lexer_by_name(language)
         formatter = HtmlFormatter()
         highlighted_text = highlight(text, lexer, formatter)
