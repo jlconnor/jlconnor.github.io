@@ -42,7 +42,7 @@ class PicoRenderer(mistune.HTMLRenderer):
 
 
 def convert_markdown_to_html(markdown_content, title):
-    formatter = HtmlFormatter()
+    formatter = HtmlFormatter(style="friendly")
     markdown = mistune.create_markdown(renderer=PicoRenderer(formatter))  # type: ignore
     html_body = markdown(markdown_content)
     # pico.css classes: https://picocss.com/docs/classless
