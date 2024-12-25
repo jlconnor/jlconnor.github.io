@@ -61,7 +61,9 @@ def convert_markdown_to_html(markdown_content, title):
         </style>
     </head>
     <body>
-        {html_body}
+        <main>
+            {html_body}
+        </main>
     </body>
     </html>
     """
@@ -89,7 +91,7 @@ def process_markdown_files(input_directory, output_directory):
 
 
 def main():
-    input_directory = "src"
+    input_directory = "pages"
     output_directory = "."
     process_markdown_files(input_directory, output_directory)
 
