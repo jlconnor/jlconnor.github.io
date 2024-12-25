@@ -95,5 +95,11 @@ edges = [
     Edge("B", "D", 2),
     Edge("C", "D", 5)
 ]
-mst = find_minimum_spanning_tree(edges)
+find_minimum_spanning_tree(edges)
+```
+
+### Output
+
+```python
+[Edge(start='A', end='C', weight=1), Edge(start='C', end='B', weight=3), Edge(start='B', end='D', weight=2)]
 ```
