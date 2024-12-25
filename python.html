@@ -7,103 +7,180 @@
         <meta name="color-scheme" content="light dark">
         <title>jlconnor.github.io: python</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+        <style>
+            pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.hll { background-color: #ffffcc }
+.c { color: #3D7B7B; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.cp { color: #9C6500 } /* Comment.Preproc */
+.cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.gr { color: #E40000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #008400 } /* Generic.Inserted */
+.go { color: #717171 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #687822 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #717171; font-weight: bold } /* Name.Entity */
+.ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #767600 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #A45A77 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+        </style>
     </head>
     <body>
         <h1 class="h1">Python Code Snippets</h1>
 <h2 class="h2">Prim's Algorithm</h2>
-<pre><code class="language-python">from dataclasses import dataclass
-from itertools import combinations, count
-from typing import Dict, Iterator, List, Set, Tuple
-import heapq
+<pre><code><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span><span class="p">,</span> <span class="n">count</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">import</span> <span class="nn">heapq</span>
 
-@dataclass(frozen=True)
-class Edge:
-    &quot;&quot;&quot;Immutable edge representation with weight&quot;&quot;&quot;
-    start: str
-    end: str
-    weight: float
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Edge</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Immutable edge representation with weight&quot;&quot;&quot;</span>
+    <span class="n">start</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">end</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">weight</span><span class="p">:</span> <span class="nb">float</span>
 
-    def __lt__(self, other: 'Edge') -&gt; bool:
-        return self.weight &lt; other.weight
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s1">&#39;Edge&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">weight</span>
 
-class Graph:
-    &quot;&quot;&quot;Graph representation optimized for Prim's algorithm&quot;&quot;&quot;
-    def __init__(self, edges: List[Edge]):
-        self._adjacency: Dict[str, List[Edge]] = {}
-        self._build_adjacency_list(edges)
+<span class="k">class</span> <span class="nc">Graph</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Graph representation optimized for Prim&#39;s algorithm&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Edge</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adjacency</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Edge</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_adjacency_list</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
 
-    def _build_adjacency_list(self, edges: List[Edge]) -&gt; None:
-        &quot;&quot;&quot;Builds adjacency list representation from edges&quot;&quot;&quot;
-        for edge in edges:
-            # Add edge in both directions since graph is undirected
-            self._adjacency.setdefault(edge.start, []).append(edge)
-            self._adjacency.setdefault(edge.end, []).append(
-                Edge(edge.end, edge.start, edge.weight)
-            )
+    <span class="k">def</span> <span class="nf">_build_adjacency_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Edge</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Builds adjacency list representation from edges&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+            <span class="c1"># Add edge in both directions since graph is undirected</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_adjacency</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_adjacency</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">Edge</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">edge</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+            <span class="p">)</span>
 
-    def get_edges(self, vertex: str) -&gt; Iterator[Edge]:
-        &quot;&quot;&quot;Returns iterator of edges connected to vertex&quot;&quot;&quot;
-        return iter(self._adjacency.get(vertex, []))
+    <span class="k">def</span> <span class="nf">get_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vertex</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Edge</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns iterator of edges connected to vertex&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_adjacency</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="p">[]))</span>
 
-def find_minimum_spanning_tree(edges: List[Edge]) -&gt; List[Edge]:
-    &quot;&quot;&quot;
-    Implements Prim's algorithm using a priority queue and itertools
+<span class="k">def</span> <span class="nf">find_minimum_spanning_tree</span><span class="p">(</span><span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Edge</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Edge</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implements Prim&#39;s algorithm using a priority queue and itertools</span>
 
-    Args:
-        edges: List of Edge objects representing the graph
+<span class="sd">    Args:</span>
+<span class="sd">        edges: List of Edge objects representing the graph</span>
 
-    Returns:
-        List of Edge objects in the minimum spanning tree
-    &quot;&quot;&quot;
-    if not edges:
-        return []
+<span class="sd">    Returns:</span>
+<span class="sd">        List of Edge objects in the minimum spanning tree</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">edges</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
 
-    graph = Graph(edges)
-    mst: List[Edge] = []
-    visited: Set[str] = set()
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+    <span class="n">mst</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Edge</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">visited</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
-    # Start from first vertex we find
-    start = edges[0].start
-    visited.add(start)
+    <span class="c1"># Start from first vertex we find</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">edges</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">start</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
 
-    # Use priority queue for efficient minimum edge finding
-    edge_queue: List[Edge] = []
+    <span class="c1"># Use priority queue for efficient minimum edge finding</span>
+    <span class="n">edge_queue</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Edge</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
-    # Add all edges from starting vertex
-    for edge in graph.get_edges(start):
-        heapq.heappush(edge_queue, edge)
+    <span class="c1"># Add all edges from starting vertex</span>
+    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">get_edges</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">edge_queue</span><span class="p">,</span> <span class="n">edge</span><span class="p">)</span>
 
-    # Keep track of number of vertices we've processed
-    vertices_processed = count(start=1)
+    <span class="c1"># Keep track of number of vertices we&#39;ve processed</span>
+    <span class="n">vertices_processed</span> <span class="o">=</span> <span class="n">count</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    # Continue until we've visited all vertices or run out of edges
-    while edge_queue and next(vertices_processed) &lt; len(graph._adjacency):
-        # Get minimum weight edge
-        edge = heapq.heappop(edge_queue)
+    <span class="c1"># Continue until we&#39;ve visited all vertices or run out of edges</span>
+    <span class="k">while</span> <span class="n">edge_queue</span> <span class="ow">and</span> <span class="nb">next</span><span class="p">(</span><span class="n">vertices_processed</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">_adjacency</span><span class="p">):</span>
+        <span class="c1"># Get minimum weight edge</span>
+        <span class="n">edge</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">edge_queue</span><span class="p">)</span>
 
-        # Skip if we've already visited this vertex
-        if edge.end in visited:
-            continue
+        <span class="c1"># Skip if we&#39;ve already visited this vertex</span>
+        <span class="k">if</span> <span class="n">edge</span><span class="o">.</span><span class="n">end</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="k">continue</span>
 
-        # Add to MST and mark as visited
-        mst.append(edge)
-        visited.add(edge.end)
+        <span class="c1"># Add to MST and mark as visited</span>
+        <span class="n">mst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
 
-        # Add all edges from new vertex
-        for next_edge in graph.get_edges(edge.end):
-            if next_edge.end not in visited:
-                heapq.heappush(edge_queue, next_edge)
+        <span class="c1"># Add all edges from new vertex</span>
+        <span class="k">for</span> <span class="n">next_edge</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">get_edges</span><span class="p">(</span><span class="n">edge</span><span class="o">.</span><span class="n">end</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">next_edge</span><span class="o">.</span><span class="n">end</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">edge_queue</span><span class="p">,</span> <span class="n">next_edge</span><span class="p">)</span>
 
-    return mst
+    <span class="k">return</span> <span class="n">mst</span>
 
-edges = [
-    Edge(&quot;A&quot;, &quot;B&quot;, 4),
-    Edge(&quot;A&quot;, &quot;C&quot;, 1),
-    Edge(&quot;B&quot;, &quot;C&quot;, 3),
-    Edge(&quot;B&quot;, &quot;D&quot;, 2),
-    Edge(&quot;C&quot;, &quot;D&quot;, 5)
-]
-mst = find_minimum_spanning_tree(edges)
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Edge</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="n">Edge</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">Edge</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="n">Edge</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="n">Edge</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">mst</span> <span class="o">=</span> <span class="n">find_minimum_spanning_tree</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+</pre></div>
 </code></pre>
 
     </body>

@@ -1,12 +1,17 @@
 import os
 
 import mistune
+import pygments
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
 
 
 class PicoRenderer(mistune.HTMLRenderer):
+    def __init__(self, formatter):
+        super().__init__()
+        self.formatter = formatter
+
     def heading(self, text, level, **attrs):
         return f'<h{level} class="h{level}">{text}</h{level}>\n'
 
@@ -20,11 +25,11 @@ class PicoRenderer(mistune.HTMLRenderer):
     def list_item(self, text):
         return f'<li class="li">{text}</li>\n'
 
-    def block_quote(self, text, language="text"):
+    def block_code(self, code: str, info=None) -> str:
+        language = info.split(None, 1)[0] if info else "text"
         lexer = get_lexer_by_name(language)
-        formatter = HtmlFormatter()
-        highlighted_text = highlight(text, lexer, formatter)
-        return f'<blockquote class="blockquote">{highlighted_text}</blockquote>\n'
+        highlighted_code = highlight(code, lexer, self.formatter)
+        return f"<pre><code>{highlighted_code}</code></pre>\n"
 
     def link(self, text: str, url: str, title=None) -> str:
         if url.endswith(".md"):
@@ -37,7 +42,8 @@ class PicoRenderer(mistune.HTMLRenderer):
 
 
 def convert_markdown_to_html(markdown_content, title):
-    markdown = mistune.create_markdown(renderer=PicoRenderer())  # type: ignore
+    formatter = HtmlFormatter()
+    markdown = mistune.create_markdown(renderer=PicoRenderer(formatter))  # type: ignore
     html_body = markdown(markdown_content)
     # pico.css classes: https://picocss.com/docs/classless
     css_url = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
@@ -50,6 +56,9 @@ def convert_markdown_to_html(markdown_content, title):
         <meta name="color-scheme" content="light dark">
         <title>jlconnor.github.io: {title}</title>
         <link rel="stylesheet" href="{css_url}">
+        <style>
+            {formatter.get_style_defs()}
+        </style>
     </head>
     <body>
         {html_body}
