@@ -26,12 +26,21 @@ class PicoRenderer(mistune.HTMLRenderer):
         highlighted_text = highlight(text, lexer, formatter)
         return f'<blockquote class="blockquote">{highlighted_text}</blockquote>\n'
 
+    def link(self, text: str, url: str, title=None) -> str:
+        if url.endswith(".md"):
+            url = url[:-3] + ".html"
+        if text is None:
+            text = url
+        if title is not None:
+            return f'<a href="{url}" title="{title}">{text}</a>'
+        return f'<a href="{url}">{text}</a>'
+
 
 def convert_markdown_to_html(markdown_content, title):
-    # markdown = mistune.create_markdown(renderer=PicoRenderer())
-    markdown = mistune.create_markdown()
+    markdown = mistune.create_markdown(renderer=PicoRenderer())  # type: ignore
     html_body = markdown(markdown_content)
-    css_url = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    # pico.css classes: https://picocss.com/docs/classless
+    css_url = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
     html_content = f"""
     <!DOCTYPE html>
     <html lang="en">

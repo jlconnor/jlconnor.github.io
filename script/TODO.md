@@ -1,1 +1,1 @@
- [ ] Fix generated links
+[x] Fix generated links
