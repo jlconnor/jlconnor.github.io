@@ -7,6 +7,26 @@ from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
 
+_HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>jlconnor.github.io: {title}</title>
+    <link rel="stylesheet" href="{css_url}">
+    <style>
+        {pygments_style}
+    </style>
+</head>
+<body>
+    <main>
+        {html_body}
+    </main>
+</body>
+</html>
+"""
+
 
 class PicoRenderer(mistune.HTMLRenderer):
     """
@@ -79,31 +99,24 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
     Returns:
         str: The HTML content as a string.
     """
+    # pygments formatter canned-styles:
+    # 'abap', 'algol', 'algol_nu', 'arduino', 'autumn', 'bw', 'borland',
+    # 'coffee', 'colorful', 'default', 'dracula', 'emacs', 'friendly_grayscale',
+    # 'friendly', 'fruity', 'github-dark', 'gruvbox-dark', 'gruvbox-light',
+    # 'igor', 'inkpot', 'lightbulb', 'lilypond', 'lovelace', 'manni', 'material',
+    # 'monokai', 'murphy', 'native', 'nord-darker', 'nord', 'one-dark',
+    # 'paraiso-dark', 'paraiso-light', 'pastie', 'perldoc', 'rainbow_dash', 'rrt',
+    # 'sas', 'solarized-dark', 'solarized-light', 'staroffice', 'stata-dark', 'stata-light',
+    # 'tango', 'trac', 'vim', 'vs', 'xcode', 'zenburn'
     formatter = HtmlFormatter(style="friendly")
     markdown = mistune.create_markdown(renderer=PicoRenderer(formatter))  # type: ignore
     html_body = markdown(markdown_content)
     # pico.css classes: https://picocss.com/docs/classless
     css_url = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-    html_content = f"""
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="color-scheme" content="light dark">
-        <title>jlconnor.github.io: {title}</title>
-        <link rel="stylesheet" href="{css_url}">
-        <style>
-            {formatter.get_style_defs()}
-        </style>
-    </head>
-    <body>
-        <main>
-            {html_body}
-        </main>
-    </body>
-    </html>
-    """
+    pygments_style = formatter.get_style_defs()
+    html_content = _HTML_TEMPLATE.format(
+        title=title, html_body=html_body, css_url=css_url, pygments_style=pygments_style
+    )
     return html_content
 
 
