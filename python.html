@@ -1,0 +1,111 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <title>jlconnor.github.io: python</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    </head>
+    <body>
+        <h1>Python Code Snippets</h1>
+<h2>Prim's Algorithm</h2>
+<pre><code class="language-python">from dataclasses import dataclass
+from itertools import combinations, count
+from typing import Dict, Iterator, List, Set, Tuple
+import heapq
+
+@dataclass(frozen=True)
+class Edge:
+    &quot;&quot;&quot;Immutable edge representation with weight&quot;&quot;&quot;
+    start: str
+    end: str
+    weight: float
+
+    def __lt__(self, other: 'Edge') -&gt; bool:
+        return self.weight &lt; other.weight
+
+class Graph:
+    &quot;&quot;&quot;Graph representation optimized for Prim's algorithm&quot;&quot;&quot;
+    def __init__(self, edges: List[Edge]):
+        self._adjacency: Dict[str, List[Edge]] = {}
+        self._build_adjacency_list(edges)
+
+    def _build_adjacency_list(self, edges: List[Edge]) -&gt; None:
+        &quot;&quot;&quot;Builds adjacency list representation from edges&quot;&quot;&quot;
+        for edge in edges:
+            # Add edge in both directions since graph is undirected
+            self._adjacency.setdefault(edge.start, []).append(edge)
+            self._adjacency.setdefault(edge.end, []).append(
+                Edge(edge.end, edge.start, edge.weight)
+            )
+
+    def get_edges(self, vertex: str) -&gt; Iterator[Edge]:
+        &quot;&quot;&quot;Returns iterator of edges connected to vertex&quot;&quot;&quot;
+        return iter(self._adjacency.get(vertex, []))
+
+def find_minimum_spanning_tree(edges: List[Edge]) -&gt; List[Edge]:
+    &quot;&quot;&quot;
+    Implements Prim's algorithm using a priority queue and itertools
+
+    Args:
+        edges: List of Edge objects representing the graph
+
+    Returns:
+        List of Edge objects in the minimum spanning tree
+    &quot;&quot;&quot;
+    if not edges:
+        return []
+
+    graph = Graph(edges)
+    mst: List[Edge] = []
+    visited: Set[str] = set()
+
+    # Start from first vertex we find
+    start = edges[0].start
+    visited.add(start)
+
+    # Use priority queue for efficient minimum edge finding
+    edge_queue: List[Edge] = []
+
+    # Add all edges from starting vertex
+    for edge in graph.get_edges(start):
+        heapq.heappush(edge_queue, edge)
+
+    # Keep track of number of vertices we've processed
+    vertices_processed = count(start=1)
+
+    # Continue until we've visited all vertices or run out of edges
+    while edge_queue and next(vertices_processed) &lt; len(graph._adjacency):
+        # Get minimum weight edge
+        edge = heapq.heappop(edge_queue)
+
+        # Skip if we've already visited this vertex
+        if edge.end in visited:
+            continue
+
+        # Add to MST and mark as visited
+        mst.append(edge)
+        visited.add(edge.end)
+
+        # Add all edges from new vertex
+        for next_edge in graph.get_edges(edge.end):
+            if next_edge.end not in visited:
+                heapq.heappush(edge_queue, next_edge)
+
+    return mst
+
+edges = [
+    Edge(&quot;A&quot;, &quot;B&quot;, 4),
+    Edge(&quot;A&quot;, &quot;C&quot;, 1),
+    Edge(&quot;B&quot;, &quot;C&quot;, 3),
+    Edge(&quot;B&quot;, &quot;D&quot;, 2),
+    Edge(&quot;C&quot;, &quot;D&quot;, 5)
+]
+mst = find_minimum_spanning_tree(edges)
+</code></pre>
+
+    </body>
+    </html>
+    
