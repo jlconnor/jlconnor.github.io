@@ -1,34 +1,38 @@
-# Hello World
+# Engineering Excellence Meets Creative Innovation
 
 ![Profile Image](assets/profile.jpg)
 
-I'm Jason Connor, a long-time engineer and tech enthusiast. I graduated with a Master's degree in computer science, concentrating on algorithm analysis and parallel computing. A true (at the time) LeetCode nerd, but rather rusty anymore. It turns out it's not really something that you use much in industry. Well, outside interviews.
+Welcome! I'm Jason Connor, a seasoned software engineer who thrives at the intersection of cutting-edge technology and practical innovation. Armed with a Master's degree in Computer Science specializing in algorithm analysis and parallel computing, I've built a career crafting robust solutions across local, distributed, and cloud-based services.
 
-I've since made a career working on local, distributed, and cloud services. I've been lucky enough to spend my career programming in Python, JavaScript, TypeScript, SQL, and most recently, Golang.
+## Technical Expertise
 
-I'm a hardcore CLI enthusiast who uses Vim (the original, not Neovim), pgcli, snowflakecli, rediscli, and others to interact with my programming environment.
+My engineering toolkit spans multiple languages and paradigms, including Python, JavaScript, TypeScript, SQL, and Golang. I'm passionate about efficient workflows and leverage the power of CLI tools – you'll find me navigating through projects using Vim, database CLI clients, and other tools that promote understanding, collaboration and productivity.
 
-I also regularly use Docker (for work and personal projects) and Kubernetes (just for work).
+In the containerization space, I'm well-versed in Docker for both professional and personal projects, and I bring enterprise-level experience with Kubernetes deployments as well as cloud-native solutions, such as AWS Lambda and GCP Cloud Functions.
 
-That said, I'm interested in the most recent trends and have played around with Elixir and have integrated AI into my workflows, leveraging Copilot, ChatGPT, Claude, and even open-source (locally run with Ollama) models like Llama and Qwen.
+Always at the forefront of innovation, I've embraced AI-driven development by integrating tools like GitHub Copilot, ChatGPT, Claude, and even experimenting with locally-hosted open-source models through Ollama, including Llama and Qwen. I'm currently building this website with Windsurf.
 
-I like to play around with a number of different projects, most of which don't really go anywhere once I've learned whatever technology I was interested in.
+## The Maker's Spirit
 
-## Other Interests
+Beyond code, I'm driven by an insatiable curiosity to create and build. My projects span diverse domains:
 
-In my free time, I love to make and build things.
+- **Audio Engineering**: Currently crafting a custom headphone amplifier and designing my second pair of speakers
+- **Culinary Arts**: Mastering the art of sauce-making, from classic pomodoro to vibrant enchilada sauces, all optimized for convenient meal prep
+- **DIY Projects**: From building my own bicycle to past adventures in homebrewing and urban gardening, with hydroponics, in beautiful Colorado
 
-This includes cooking, where I like to make large batches of sauces like pomodoro, pesto, pizza, red and green chilies, and red and green enchilada sauces that I can freeze for weeknight convenience.
+## Literary Pursuits
 
-I built my bike, have built one pair of speakers and am working on another (when it's warm), and I'm currently building a headphone amplifier.
+An avid reader with eclectic tastes, I dive into carefully curated selections of sci-fi, fantasy, and thrillers, always hunting for those hidden gems rated 4+ on Goodreads. Occasionally, you'll find me exploring thought-provoking dramas and non-fiction works that challenge conventional thinking.
 
-I've brewed my own beer (though I've stopped as I don't drink very much anymore), grown my own marijuana (legal where I live in Colorado), and had a garden (though stopped when we got our Boston Terrier, Lilo).
+## What's Next?
 
-I love to read, mostly kitsch sci-fi, fantasy, and thrillers, but occasionally drama or non-fiction. I usually choose books by looking for anything rated 4+ on Goodreads.
-
-The plan is to use this site as a compilation of everything I like. I'll try to post projects, recipes, book recommendations, code snippets, and anything else I can think of here.
+This digital space serves as my laboratory, portfolio, and knowledge hub. Here, you'll discover:
+- Technical insights and code snippets
+- Project showcases
+- Culinary experiments
+- Book recommendations
+- And whatever else captures my imagination
 
 ## [Python Code Snippets](python.md)
 
-This is really just to make sure my customization of the html generation is working for syntax highlighting. Thank you pygments!
-
+*Powered by Pygments for beautiful syntax highlighting*
