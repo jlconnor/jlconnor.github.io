@@ -24,7 +24,7 @@ Beyond code, I'm driven by an insatiable curiosity to create and build. My proje
 
 An avid reader with eclectic tastes, I dive into carefully curated selections of sci-fi, fantasy, and thrillers, always hunting for those hidden gems rated 4+ on Goodreads. Occasionally, you'll find me exploring thought-provoking dramas and non-fiction works that challenge conventional thinking.
 
-## What's Next?
+## Unfinished Thoughts...
 
 This digital space serves as my laboratory, portfolio, and knowledge hub. Here, you'll discover:
 - Technical insights and code snippets
