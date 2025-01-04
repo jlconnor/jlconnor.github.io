@@ -6,23 +6,23 @@ Welcome! I'm Jason Connor, a seasoned software engineer who thrives at the inter
 
 ## Technical Expertise
 
-My engineering toolkit spans multiple languages and paradigms, including Python, JavaScript, TypeScript, SQL, and Golang. I'm passionate about efficient workflows and leverage the power of CLI tools – you'll find me navigating through projects using Vim, database CLI clients, and other tools that promote understanding, collaboration and productivity.
+My engineering toolkit spans multiple languages and paradigms, including Python, Golang, SQL, and JavaScript, TypeScript. I'm passionate about efficient workflows and leverage the power of CLI tools – you'll find me navigating through projects using Vim, database CLI clients, and other tools that promote understanding, collaboration and productivity.
 
-In the containerization space, I'm well-versed in Docker for both professional and personal projects, and I bring enterprise-level experience with Kubernetes deployments as well as cloud-native solutions, such as AWS Lambda and GCP Cloud Functions.
+In the containerization space, I'm well-versed in Docker for both professional and personal projects, I bring enterprise-level experience with Kubernetes deployments and cloud-native solutions, such as AWS Lambda and GCP Cloud Functions.
 
-Always at the forefront of innovation, I've embraced AI-driven development by integrating tools like GitHub Copilot, ChatGPT, Claude, and even experimenting with locally-hosted open-source models through Ollama, including Llama and Qwen. I'm currently building this website with Windsurf.
+Always at the forefront of innovation, I've embraced AI-driven development by leveraging the latest LLMs by integrating them into my development environments and diving into the latest tools, such as vim-ai, vim-codeium, Windsurf, LiteLLM and Langfuse.
 
 ## The Maker's Spirit
 
 Beyond code, I'm driven by an insatiable curiosity to create and build. My projects span diverse domains:
 
-- **Audio Engineering**: Currently crafting a custom headphone amplifier and designing my second pair of speakers
-- **Culinary Arts**: Mastering the art of sauce-making, from classic pomodoro to vibrant enchilada sauces, all optimized for convenient meal prep
-- **DIY Projects**: From building my own bicycle to past adventures in homebrewing and urban gardening, with hydroponics, in beautiful Colorado
+- **Audio Engineering**: Currently crafting a DIY headphone amplifier and building my second pair of speakers
+- **Culinary Arts**: Advocate of **mise en place**, I approach cooking as an engineer, preparing foodstuffs in advance for ease and convenience when it matters
+- **DIY Projects**: From building my own bicycle, my desk, to past adventures in homebrewing and urban gardening, I love building almost anything
 
 ## Literary Pursuits
 
-An avid reader with eclectic tastes, I dive into carefully curated selections of sci-fi, fantasy, and thrillers, always hunting for those hidden gems rated 4+ on Goodreads. Occasionally, you'll find me exploring thought-provoking dramas and non-fiction works that challenge conventional thinking.
+An avid reader with kitsch tastes, I dive into curated selections of sci-fi, fantasy, and thrillers, always hunting for those hidden gems rated 4+ on Goodreads. Occasionally, you'll find me exploring thought-provoking non-fiction works that challenge conventional thinking.
 
 ## Unfinished Thoughts...
 

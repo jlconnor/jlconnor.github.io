@@ -2,7 +2,6 @@ import os
 from typing import Any, Optional
 
 import mistune
-import pygments
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
