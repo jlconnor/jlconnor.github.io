@@ -21,10 +21,10 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
     <link rel="stylesheet" href="{css_url}">
     <style>
         /* Custom styles */
-        :root {
+        :root {{
             --typography-spacing-vertical: 1.5rem;
             --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
-        }
+        }}
         
         body > header,
         body > footer {
