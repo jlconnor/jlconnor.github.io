@@ -12,16 +12,72 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <title>jlconnor.github.io: {title}</title>
+    <meta name="description" content="Personal website of Jason Connor - Software Engineer">
+    <meta name="author" content="Jason Connor">
+    <meta property="og:title" content="Jason Connor - {title}">
+    <meta property="og:description" content="Personal website of Jason Connor - Software Engineer">
+    <meta property="og:image" content="assets/profile.jpg">
+    <title>Jason Connor - {title}</title>
     <link rel="stylesheet" href="{css_url}">
     <style>
+        /* Custom styles */
+        :root {
+            --typography-spacing-vertical: 1.5rem;
+            --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
+        }
+        
+        body > header,
+        body > footer {
+            padding: var(--spacing);
+            background: var(--card-background-color);
+        }
+        
+        body > header {
+            border-bottom: 1px solid var(--card-border-color);
+        }
+        
+        body > footer {
+            border-top: 1px solid var(--card-border-color);
+            text-align: center;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--h1-color);
+        }
+        
+        pre {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        code {
+            font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        }
+        
         {pygments_style}
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html">Jason Connor</a>
+            <a href="python.html">Python Snippets</a>
+        </nav>
+    </header>
     <main>
         {html_body}
     </main>
+    <footer>
+        <small>© 2025 Jason Connor • Built with <a href="https://picocss.com">Pico CSS</a></small>
+    </footer>
 </body>
 </html>
 """
@@ -62,7 +118,7 @@ class PicoRenderer(mistune.HTMLRenderer):
         return f'<h{level} class="h{level}">{text}</h{level}>\n'
 
     def paragraph(self, text: str) -> str:
-        return f'<p class="p">{text}</p>\n'
+        return f'<p class="p" style="max-width: 70ch">{text}</p>\n'
 
     def list(self, text: str, ordered: bool, **attrs: Any) -> str:
         tag = "ol" if ordered else "ul"
@@ -75,7 +131,7 @@ class PicoRenderer(mistune.HTMLRenderer):
         language = info.split(None, 1)[0] if info else "text"
         lexer = get_lexer_by_name(language)
         highlighted_code = highlight(code, lexer, self.formatter)
-        return f"<pre><code>{highlighted_code}</code></pre>\n"
+        return f'<pre><code class="language-{language}">{highlighted_code}</code></pre>\n'
 
     def link(self, text: str, url: str, title: Optional[str] = None) -> str:
         if url.endswith(".md"):
