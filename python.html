@@ -4,9 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <title>jlconnor.github.io: python</title>
+    <meta name="description" content="Personal website of Jason Connor - Software Engineer">
+    <meta name="author" content="Jason Connor">
+    <meta property="og:title" content="Jason Connor - python">
+    <meta property="og:description" content="Personal website of Jason Connor - Software Engineer">
+    <meta property="og:image" content="assets/profile.jpg">
+    <title>Jason Connor - python</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
     <style>
+        /* Custom styles */
+        :root {
+            --typography-spacing-vertical: 1.5rem;
+            --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
+        }
+
+        body > header,
+        body > footer {
+            padding: var(--spacing);
+            background: var(--card-background-color);
+        }
+
+        body > header {
+            border-bottom: 1px solid var(--card-border-color);
+        }
+
+        body > footer {
+            border-top: 1px solid var(--card-border-color);
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--h1-color);
+        }
+
+        pre {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        code {
+            font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        }
+
         pre { line-height: 125%; }
 td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -84,10 +131,16 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html">Jason Connor</a>
+            <a href="python.html">Python Snippets</a>
+        </nav>
+    </header>
     <main>
         <h1 class="h1">Python Code Snippets</h1>
 <h2 class="h2">Prim's Algorithm</h2>
-<pre><code><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<pre><code class="language-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span><span class="p">,</span> <span class="n">count</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">import</span> <span class="nn">heapq</span>
@@ -183,10 +236,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </pre></div>
 </code></pre>
 <h3 class="h3">Output</h3>
-<pre><code><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Edge</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">Edge</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">Edge</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
+<pre><code class="language-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Edge</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">Edge</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="n">Edge</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
 </pre></div>
 </code></pre>
 
     </main>
+    <footer>
+        <small>© 2025 Jason Connor • Built with <a href="https://picocss.com">Pico CSS</a></small>
+    </footer>
 </body>
 </html>

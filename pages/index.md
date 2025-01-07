@@ -10,7 +10,7 @@ My engineering toolkit spans multiple languages and paradigms, including Python,
 
 In the containerization space, I'm well-versed in Docker for both professional and personal projects, I bring enterprise-level experience with Kubernetes deployments and cloud-native solutions, such as AWS Lambda and GCP Cloud Functions.
 
-Always at the forefront of innovation, I've embraced AI-driven development by leveraging the latest LLMs by integrating them into my development environments and diving into the latest tools, such as vim-ai, vim-codeium, Windsurf, LiteLLM and Langfuse.
+Always at the forefront of innovation, I've embraced AI-driven development by leveraging the latest LLMs by integrating them into my development environments and diving into the latest tools, such as vim-ai, vim-codeium, aider, LiteLLM and Langfuse.
 
 ## The Maker's Spirit
 

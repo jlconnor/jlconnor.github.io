@@ -4,9 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <title>jlconnor.github.io: index</title>
+    <meta name="description" content="Personal website of Jason Connor - Software Engineer">
+    <meta name="author" content="Jason Connor">
+    <meta property="og:title" content="Jason Connor - index">
+    <meta property="og:description" content="Personal website of Jason Connor - Software Engineer">
+    <meta property="og:image" content="assets/profile.jpg">
+    <title>Jason Connor - index</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
     <style>
+        /* Custom styles */
+        :root {
+            --typography-spacing-vertical: 1.5rem;
+            --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
+        }
+
+        body > header,
+        body > footer {
+            padding: var(--spacing);
+            background: var(--card-background-color);
+        }
+
+        body > header {
+            border-bottom: 1px solid var(--card-border-color);
+        }
+
+        body > footer {
+            border-top: 1px solid var(--card-border-color);
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--h1-color);
+        }
+
+        pre {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        code {
+            font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        }
+
         pre { line-height: 125%; }
 td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -84,24 +131,30 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html">Jason Connor</a>
+            <a href="python.html">Python Snippets</a>
+        </nav>
+    </header>
     <main>
         <h1 class="h1">Engineering Excellence Meets Creative Innovation</h1>
-<p class="p"><img src="assets/profile.jpg" alt="Profile Image" /></p>
-<p class="p">Welcome! I'm Jason Connor, a seasoned software engineer who thrives at the intersection of cutting-edge technology and practical innovation. Armed with a Master's degree in Computer Science specializing in algorithm analysis and parallel computing, I've built a career crafting robust solutions across local, distributed, and cloud-based services.</p>
+<p class="p" style="max-width: 70ch"><img src="assets/profile.jpg" alt="Profile Image" /></p>
+<p class="p" style="max-width: 70ch">Welcome! I'm Jason Connor, a seasoned software engineer who thrives at the intersection of cutting-edge technology and practical innovation. Armed with a Master's degree in Computer Science specializing in algorithm analysis and parallel computing, I've built a career crafting robust solutions across local, distributed, and cloud-based services.</p>
 <h2 class="h2">Technical Expertise</h2>
-<p class="p">My engineering toolkit spans multiple languages and paradigms, including Python, Golang, SQL, and JavaScript, TypeScript. I'm passionate about efficient workflows and leverage the power of CLI tools – you'll find me navigating through projects using Vim, database CLI clients, and other tools that promote understanding, collaboration and productivity.</p>
-<p class="p">In the containerization space, I'm well-versed in Docker for both professional and personal projects, I bring enterprise-level experience with Kubernetes deployments and cloud-native solutions, such as AWS Lambda and GCP Cloud Functions.</p>
-<p class="p">Always at the forefront of innovation, I've embraced AI-driven development by leveraging the latest LLMs by integrating them into my development environments and diving into the latest tools, such as vim-ai, vim-codeium, Windsurf, LiteLLM and Langfuse.</p>
+<p class="p" style="max-width: 70ch">My engineering toolkit spans multiple languages and paradigms, including Python, Golang, SQL, and JavaScript, TypeScript. I'm passionate about efficient workflows and leverage the power of CLI tools – you'll find me navigating through projects using Vim, database CLI clients, and other tools that promote understanding, collaboration and productivity.</p>
+<p class="p" style="max-width: 70ch">In the containerization space, I'm well-versed in Docker for both professional and personal projects, I bring enterprise-level experience with Kubernetes deployments and cloud-native solutions, such as AWS Lambda and GCP Cloud Functions.</p>
+<p class="p" style="max-width: 70ch">Always at the forefront of innovation, I've embraced AI-driven development by leveraging the latest LLMs by integrating them into my development environments and diving into the latest tools, such as vim-ai, vim-codeium, aider, LiteLLM and Langfuse.</p>
 <h2 class="h2">The Maker's Spirit</h2>
-<p class="p">Beyond code, I'm driven by an insatiable curiosity to create and build. My projects span diverse domains:</p>
+<p class="p" style="max-width: 70ch">Beyond code, I'm driven by an insatiable curiosity to create and build. My projects span diverse domains:</p>
 <ul class="ul"><li class="li"><strong>Audio Engineering</strong>: Currently crafting a DIY headphone amplifier and building my second pair of speakers</li>
 <li class="li"><strong>Culinary Arts</strong>: Advocate of <strong>mise en place</strong>, I approach cooking as an engineer, preparing foodstuffs in advance for ease and convenience when it matters</li>
 <li class="li"><strong>DIY Projects</strong>: From building my own bicycle, my desk, to past adventures in homebrewing and urban gardening, I love building almost anything</li>
 </ul>
 <h2 class="h2">Literary Pursuits</h2>
-<p class="p">An avid reader with kitsch tastes, I dive into curated selections of sci-fi, fantasy, and thrillers, always hunting for those hidden gems rated 4+ on Goodreads. Occasionally, you'll find me exploring thought-provoking non-fiction works that challenge conventional thinking.</p>
+<p class="p" style="max-width: 70ch">An avid reader with kitsch tastes, I dive into curated selections of sci-fi, fantasy, and thrillers, always hunting for those hidden gems rated 4+ on Goodreads. Occasionally, you'll find me exploring thought-provoking non-fiction works that challenge conventional thinking.</p>
 <h2 class="h2">Unfinished Thoughts...</h2>
-<p class="p">This digital space serves as my laboratory, portfolio, and knowledge hub. Here, you'll discover:</p>
+<p class="p" style="max-width: 70ch">This digital space serves as my laboratory, portfolio, and knowledge hub. Here, you'll discover:</p>
 <ul class="ul"><li class="li">Technical insights and code snippets</li>
 <li class="li">Project showcases</li>
 <li class="li">Culinary experiments</li>
@@ -109,8 +162,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li class="li">And whatever else captures my imagination</li>
 </ul>
 <h2 class="h2"><a href="python.html">Python Code Snippets</a></h2>
-<p class="p"><em>Powered by Pygments for beautiful syntax highlighting</em></p>
+<p class="p" style="max-width: 70ch"><em>Powered by Pygments for beautiful syntax highlighting</em></p>
 
     </main>
+    <footer>
+        <small>© 2025 Jason Connor • Built with <a href="https://picocss.com">Pico CSS</a></small>
+    </footer>
 </body>
 </html>

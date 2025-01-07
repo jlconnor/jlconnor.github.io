@@ -1,1 +1,2 @@
-[x] Fix generated links
+- [x] Fix generated links
+- [ ] Convert project to `uv`

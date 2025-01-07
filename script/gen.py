@@ -25,43 +25,43 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
             --typography-spacing-vertical: 1.5rem;
             --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
         }}
-        
+
         body > header,
         body > footer {{
             padding: var(--spacing);
             background: var(--card-background-color);
         }}
-        
+
         body > header {{
             border-bottom: 1px solid var(--card-border-color);
         }}
-        
+
         body > footer {{
             border-top: 1px solid var(--card-border-color);
             text-align: center;
         }}
-        
+
         nav {{
             display: flex;
             justify-content: space-between;
             align-items: center;
         }}
-        
+
         nav a {{
             text-decoration: none;
             color: var(--h1-color);
         }}
-        
+
         pre {{
             padding: 1.5rem;
             border-radius: 8px;
             margin: 2rem 0;
         }}
-        
+
         code {{
             font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
         }}
-        
+
         {pygments_style}
     </style>
 </head>
@@ -131,7 +131,9 @@ class PicoRenderer(mistune.HTMLRenderer):
         language = info.split(None, 1)[0] if info else "text"
         lexer = get_lexer_by_name(language)
         highlighted_code = highlight(code, lexer, self.formatter)
-        return f'<pre><code class="language-{language}">{highlighted_code}</code></pre>\n'
+        return (
+            f'<pre><code class="language-{language}">{highlighted_code}</code></pre>\n'
+        )
 
     def link(self, text: str, url: str, title: Optional[str] = None) -> str:
         if url.endswith(".md"):
