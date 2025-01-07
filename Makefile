@@ -4,7 +4,7 @@ setup:
 	uv pip install -r requirements.txt
 
 website: setup
-	uv python script/gen.py
+	python script/gen.py
 
 clean:
 	rm -rf .venv
