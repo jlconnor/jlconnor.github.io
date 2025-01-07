@@ -1,10 +1,10 @@
 .PHONY: setup website clean
 
 setup:
-	uv pip install -r requirements.txt
+	uv sync
 
 website: setup
-	python script/gen.py
+	uv run jlconnor-github-io
 
 clean:
 	rm -rf .venv
