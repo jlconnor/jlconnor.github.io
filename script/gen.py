@@ -27,40 +27,40 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
         }}
         
         body > header,
-        body > footer {
+        body > footer {{
             padding: var(--spacing);
             background: var(--card-background-color);
-        }
+        }}
         
-        body > header {
+        body > header {{
             border-bottom: 1px solid var(--card-border-color);
-        }
+        }}
         
-        body > footer {
+        body > footer {{
             border-top: 1px solid var(--card-border-color);
             text-align: center;
-        }
+        }}
         
-        nav {
+        nav {{
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
+        }}
         
-        nav a {
+        nav a {{
             text-decoration: none;
             color: var(--h1-color);
-        }
+        }}
         
-        pre {
+        pre {{
             padding: 1.5rem;
             border-radius: 8px;
             margin: 2rem 0;
-        }
+        }}
         
-        code {
+        code {{
             font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
-        }
+        }}
         
         {pygments_style}
     </style>
