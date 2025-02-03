@@ -1,5 +1,5 @@
 import os
-from typing import Any, Optional
+from typing import Any, overload
 
 import mistune
 from pygments import highlight
@@ -25,43 +25,35 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
             --typography-spacing-vertical: 1.5rem;
             --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
         }}
-
         body > header,
         body > footer {{
             padding: var(--spacing);
             background: var(--card-background-color);
         }}
-
         body > header {{
             border-bottom: 1px solid var(--card-border-color);
         }}
-
         body > footer {{
             border-top: 1px solid var(--card-border-color);
             text-align: center;
         }}
-
         nav {{
             display: flex;
             justify-content: space-between;
             align-items: center;
         }}
-
         nav a {{
             text-decoration: none;
             color: var(--h1-color);
         }}
-
         pre {{
             padding: 1.5rem;
             border-radius: 8px;
             margin: 2rem 0;
         }}
-
         code {{
             font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
         }}
-
         {pygments_style}
     </style>
 </head>
@@ -103,10 +95,10 @@ class PicoRenderer(mistune.HTMLRenderer):
         list_item(text: str) -> str:
             Renders a list item element with the given text.
 
-        block_code(code: str, info: Optional[str] = None) -> str:
+        block_code(code: str, info: str | None = None) -> str:
             Renders a block of code with syntax highlighting based on the specified language.
 
-        link(text: str, url: str, title: Optional[str] = None) -> str:
+        link(text: str, url: str | None, title: str | None = None) -> str:
             Renders a hyperlink element with the given text, URL, and optional title.
     """
 
@@ -127,7 +119,7 @@ class PicoRenderer(mistune.HTMLRenderer):
     def list_item(self, text: str) -> str:
         return f'<li class="li">{text}</li>\n'
 
-    def block_code(self, code: str, info: Optional[str] = None) -> str:
+    def block_code(self, code: str, info: str | None = None) -> str:
         language = info.split(None, 1)[0] if info else "text"
         lexer = get_lexer_by_name(language)
         highlighted_code = highlight(code, lexer, self.formatter)
@@ -135,7 +127,7 @@ class PicoRenderer(mistune.HTMLRenderer):
             f'<pre><code class="language-{language}">{highlighted_code}</code></pre>\n'
         )
 
-    def link(self, text: str, url: str, title: Optional[str] = None) -> str:
+    def link(self, text: str | None, url: str, title: str | None = None) -> str:
         if url.endswith(".md"):
             url = url[:-3] + ".html"
         if text is None:
@@ -188,7 +180,7 @@ def process_markdown_files(input_directory: str, output_directory: str) -> None:
     Returns:
         None
     """
-    for root, dirs, files in os.walk(input_directory):
+    for root, _, files in os.walk(input_directory):
         rel_path = os.path.relpath(root, input_directory)
         output_subdir = os.path.join(output_directory, rel_path)
         os.makedirs(output_subdir, exist_ok=True)
@@ -203,7 +195,7 @@ def process_markdown_files(input_directory: str, output_directory: str) -> None:
                 title = os.path.splitext(filename)[0]
                 html_content = convert_markdown_to_html(markdown_content, title=title)
                 with open(output_path, "w", encoding="utf-8") as html_file:
-                    html_file.write(html_content)
+                    _ = html_file.write(html_content)
                 print(f"Converted {os.path.join(rel_path, filename)} to HTML.")
 
 
