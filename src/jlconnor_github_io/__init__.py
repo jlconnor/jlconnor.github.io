@@ -1,5 +1,7 @@
+import argparse
 import os
-from typing import Any, overload
+import shutil
+from typing import Any
 
 import mistune
 from pygments import highlight
@@ -157,7 +159,7 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
     # 'paraiso-dark', 'paraiso-light', 'pastie', 'perldoc', 'rainbow_dash', 'rrt',
     # 'sas', 'solarized-dark', 'solarized-light', 'staroffice', 'stata-dark', 'stata-light',
     # 'tango', 'trac', 'vim', 'vs', 'xcode', 'zenburn'
-    formatter = HtmlFormatter(style="friendly")
+    formatter = HtmlFormatter(style="default")
     markdown = mistune.create_markdown(renderer=PicoRenderer(formatter))  # type: ignore
     html_body = markdown(markdown_content)
     # pico.css classes: https://picocss.com/docs/classless
@@ -172,6 +174,7 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
 def process_markdown_files(input_directory: str, output_directory: str) -> None:
     """
     Recursively converts Markdown files in the input directory to HTML files in the output directory.
+    Copies non-Markdown files as-is.
 
     Args:
         input_directory (str): Path to the directory containing Markdown files
@@ -185,11 +188,10 @@ def process_markdown_files(input_directory: str, output_directory: str) -> None:
         output_subdir = os.path.join(output_directory, rel_path)
         os.makedirs(output_subdir, exist_ok=True)
         for filename in files:
+            input_path = os.path.join(root, filename)
+            output_path = os.path.join(output_subdir, filename)
             if filename.endswith(".md"):
-                input_path = os.path.join(root, filename)
-                output_path = os.path.join(
-                    output_subdir, filename.replace(".md", ".html")
-                )
+                output_path = output_path.replace(".md", ".html")
                 with open(input_path, "r", encoding="utf-8") as md_file:
                     markdown_content = md_file.read()
                 title = os.path.splitext(filename)[0]
@@ -197,12 +199,26 @@ def process_markdown_files(input_directory: str, output_directory: str) -> None:
                 with open(output_path, "w", encoding="utf-8") as html_file:
                     _ = html_file.write(html_content)
                 print(f"Converted {os.path.join(rel_path, filename)} to HTML.")
+            else:
+                shutil.copy2(input_path, output_path)
+                print(f"Copied {os.path.join(rel_path, filename)} to {output_path}.")
 
 
 def main():
-    input_directory = "pages"
-    output_directory = "."
-    process_markdown_files(input_directory, output_directory)
+    parser = argparse.ArgumentParser(
+        description="Convert Markdown files to HTML and copy non-Markdown files."
+    )
+    parser.add_argument(
+        "input_directory",
+        type=str,
+        help="The input directory containing Markdown files.",
+    )
+    parser.add_argument(
+        "output_directory", type=str, help="The output directory to save HTML files."
+    )
+    args = parser.parse_args()
+
+    process_markdown_files(args.input_directory, args.output_directory)
 
 
 if __name__ == "__main__":
