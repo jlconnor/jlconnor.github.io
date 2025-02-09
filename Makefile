@@ -4,8 +4,7 @@ setup:
 	uv sync
 
 website: setup
-	uv run jlconnor-github-io
+	uv run jlconnor_github_io ${HOME}/.local/share/Obsidian/Primary/Blog .
 
 clean:
-	rm -rf .venv
 	find . -type d -name "__pycache__" -exec rm -rf {} +

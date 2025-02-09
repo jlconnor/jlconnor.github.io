@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-site = "site:main"
+jlconnor_github_io = "site:main"
 
 [build-system]
 requires = ["setuptools>=61"]
