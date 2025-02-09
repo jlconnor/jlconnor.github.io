@@ -194,6 +194,11 @@ def process_markdown_files(input_directory: str, output_directory: str) -> None:
                 output_path = output_path.replace(".md", ".html")
                 with open(input_path, "r", encoding="utf-8") as md_file:
                     markdown_content = md_file.read()
+                    if not markdown_content.strip():
+                        print(
+                            f"Skipping empty file: {os.path.join(rel_path, filename)}"
+                        )
+                        continue
                 title = os.path.splitext(filename)[0]
                 html_content = convert_markdown_to_html(markdown_content, title=title)
                 with open(output_path, "w", encoding="utf-8") as html_file:
