@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Personal website of Jason Connor - Software Engineer">
+    <meta name="author" content="Jason Connor">
+    <meta property="og:title" content="Jason Connor - index">
+    <meta property="og:description" content="Personal website of Jason Connor - Software Engineer">
+    <meta property="og:image" content="assets/profile.jpg">
+    <title>Jason Connor - index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+    <style>
+        /* Custom styles */
+        :root {
+            --typography-spacing-vertical: 1.5rem;
+            --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
+        }
+        body > header,
+        body > footer {
+            padding: var(--spacing);
+            background: var(--card-background-color);
+        }
+        body > header {
+            border-bottom: 1px solid var(--card-border-color);
+        }
+        body > footer {
+            border-top: 1px solid var(--card-border-color);
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--h1-color);
+        }
+        pre {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        code {
+            font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        }
+        pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.hll { background-color: #ffffcc }
+.c { color: #3D7B7B; font-style: italic } /* Comment */
+.err { border: 1px solid #F00 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666 } /* Operator */
+.ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.cp { color: #9C6500 } /* Comment.Preproc */
+.cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.gr { color: #E40000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #008400 } /* Generic.Inserted */
+.go { color: #717171 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #04D } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #687822 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #00F; font-weight: bold } /* Name.Class */
+.no { color: #800 } /* Name.Constant */
+.nd { color: #A2F } /* Name.Decorator */
+.ni { color: #717171; font-weight: bold } /* Name.Entity */
+.ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.nf { color: #00F } /* Name.Function */
+.nl { color: #767600 } /* Name.Label */
+.nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.w { color: #BBB } /* Text.Whitespace */
+.mb { color: #666 } /* Literal.Number.Bin */
+.mf { color: #666 } /* Literal.Number.Float */
+.mh { color: #666 } /* Literal.Number.Hex */
+.mi { color: #666 } /* Literal.Number.Integer */
+.mo { color: #666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #A45A77 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #00F } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666 } /* Literal.Number.Integer.Long */
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Jason Connor</a>
+            <a href="python.html">Python Snippets</a>
+        </nav>
+    </header>
+    <main>
+        <h1 class="h1">Unfinished Thoughts</h1>
+<p class="p" style="max-width: 70ch"><img src="assets/profile.jpg" alt="Profile Image" /></p>
+<p class="p" style="max-width: 70ch">Hey there! I'm Jason Connor, and I have a confession: I'm terrible at finishing side projects. But you know what? That's actually my superpower. I love diving deep into new technologies, building things to understand them, and then moving on to the next exciting challenge. It's not about the destination; it's about what you learn along the way, right?</p>
+<h2 class="h2">What I Do for a Living</h2>
+<p class="p" style="max-width: 70ch">By day, I'm a software engineer with a Master's in Computer Science. I geek out over algorithms, functional programming and parallel computing, but what really gets me excited is building stuff that actually works. My go-to languages are Python and Golang, with healthy doses of SQL and TypeScript when needed. I dream of being able to use Elixir or Haskell professionally.</p>
+<p class="p" style="max-width: 70ch">I'm a command-line junkie – Vim is my second home, and I probably spend too much time customizing my development environment. Recently, I've been having way too much fun integrating AI into my workflow. Check out some cool tools I've been playing with:</p>
+<ul class="ul"><li class="li"><a href="https://github.com/Exafunction/codeium.vim">vim-codeium</a> for code assistance</li>
+<li class="li"><a href="https://aider.chat">aider</a> for pair programming with AI</li>
+<li class="li"><a href="https://www.litellm.ai">LiteLLM</a> and <a href="https://langfuse.com">Langfuse</a> for building AI applications</li>
+</ul>
+<h2 class="h2">Building Stuff (Sometimes Successfully)</h2>
+<p class="p" style="max-width: 70ch">When I'm not coding, you'll find me tinkering with all sorts of projects. Currently, I'm:</p>
+<ul class="ul"><li class="li">Building my second pair of speakers (the first pair actually works!)</li>
+<li class="li">Working on a headphone amp (still in progress, but the soldering iron is hot)</li>
+<li class="li">Cooking with probably too much precision (yes, I weigh my ingredients)</li>
+</ul>
+<p class="p" style="max-width: 70ch">I've built my own bicycle (rides great!), constructed my desk (only slightly wobbly), and killed countless plants in my urban gardening phase. Every project teaches me something, even if it's just what not to do next time.</p>
+<h2 class="h2">What I'm Reading</h2>
+<p class="p" style="max-width: 70ch">I'm a sucker for sci-fi and fantasy, especially the kind that makes you think &quot;what if?&quot; Currently working through my ever-growing Goodreads list. Got any recommendations? I'm always looking for the next great read!</p>
+<h2 class="h2">Recent Brain Dumps</h2>
+<p class="p" style="max-width: 70ch">Here's where I share what I'm learning and building:</p>
+<ul class="ul"><li class="li"></li>
+</ul>
+<p class="p" style="max-width: 70ch">Think of this site as my lab notebook – messy, constantly evolving, but hopefully interesting. Some experiments work, some fail spectacularly, but they're all part of the journey.</p>
+<p class="p" style="max-width: 70ch">Want to chat about any of this? Find me on <a href="https://github.com/jlconnor">GitHub</a> or drop me a line. I'm always up for talking tech, audio, or whatever else catches our interest!</p>
+
+    </main>
+    <footer>
+        <small>© 2025 Jason Connor • Built with <a href="https://picocss.com">Pico CSS</a></small>
+    </footer>
+</body>
+</html>
