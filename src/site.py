@@ -63,7 +63,6 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
     <header>
         <nav>
             <a href="index.html">Jason Connor</a>
-            <a href="python.html">Python Snippets</a>
         </nav>
     </header>
     <main>
