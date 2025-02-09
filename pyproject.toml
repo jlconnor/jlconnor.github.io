@@ -1,7 +1,7 @@
 [project]
 name = "jlconnor-github-io"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.2.0"
+description = "Script to build personal site"
 authors = [
     { name = "Jason L Connor", email = "jason.connor@gmail.com" }
 ]
@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-jlconnor-github-io = "jlconnor_github_io:main"
+site = "site:main"
 
 [build-system]
 requires = ["setuptools>=61"]
