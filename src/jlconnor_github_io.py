@@ -49,9 +49,9 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
             color: var(--h1-color);
         }}
         pre {{
-            padding: 1.5rem;
+            padding: 0.5rem;
             border-radius: 8px;
-            margin: 2rem 0;
+            margin: 0.5rem 0;
         }}
         code {{
             font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
@@ -66,7 +66,9 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
         </nav>
     </header>
     <main>
+        {nav_link}
         {html_body}
+        {nav_link}
     </main>
     <footer>
         <small>© 2025 Jason Connor • Built with <a href="https://picocss.com">Pico CSS</a></small>
@@ -129,8 +131,11 @@ class PicoRenderer(mistune.HTMLRenderer):
         )
 
     def link(self, text: str | None, url: str, title: str | None = None) -> str:
+        # Handle both .md files and internal links without extension
         if url.endswith(".md"):
             url = url[:-3] + ".html"
+        elif not url.startswith(("http://", "https://", "#", "/")) and "." not in url:
+            url = url + ".html"
         if text is None:
             text = url
         if title is not None:
@@ -149,6 +154,9 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
     Returns:
         str: The HTML content as a string.
     """
+    nav_link = ''
+    if title != 'index':
+        nav_link = '<p class="p" style="max-width: 70ch"><a href="index.html">← Return to homepage</a></p>'
     # pygments formatter canned-styles:
     # 'abap', 'algol', 'algol_nu', 'arduino', 'autumn', 'bw', 'borland',
     # 'coffee', 'colorful', 'default', 'dracula', 'emacs', 'friendly_grayscale',
@@ -165,7 +173,11 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
     css_url = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
     pygments_style = formatter.get_style_defs()
     html_content = _HTML_TEMPLATE.format(
-        title=title, html_body=html_body, css_url=css_url, pygments_style=pygments_style
+        title=title,
+        html_body=html_body,
+        css_url=css_url,
+        pygments_style=pygments_style,
+        nav_link=nav_link
     )
     return html_content
 
