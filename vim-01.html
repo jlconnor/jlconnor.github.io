@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Personal website of Jason Connor - Software Engineer">
+    <meta name="author" content="Jason Connor">
+    <meta property="og:title" content="Jason Connor - vim-01">
+    <meta property="og:description" content="Personal website of Jason Connor - Software Engineer">
+    <meta property="og:image" content="assets/profile.jpg">
+    <title>Jason Connor - vim-01</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+    <style>
+        /* Custom styles */
+        :root {
+            --typography-spacing-vertical: 1.5rem;
+            --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
+        }
+        body > header,
+        body > footer {
+            padding: var(--spacing);
+            background: var(--card-background-color);
+        }
+        body > header {
+            border-bottom: 1px solid var(--card-border-color);
+        }
+        body > footer {
+            border-top: 1px solid var(--card-border-color);
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--h1-color);
+        }
+        pre {
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+        }
+        code {
+            font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+        }
+        pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.hll { background-color: #ffffcc }
+.c { color: #3D7B7B; font-style: italic } /* Comment */
+.err { border: 1px solid #F00 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666 } /* Operator */
+.ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.cp { color: #9C6500 } /* Comment.Preproc */
+.cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.gr { color: #E40000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #008400 } /* Generic.Inserted */
+.go { color: #717171 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #04D } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #687822 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #00F; font-weight: bold } /* Name.Class */
+.no { color: #800 } /* Name.Constant */
+.nd { color: #A2F } /* Name.Decorator */
+.ni { color: #717171; font-weight: bold } /* Name.Entity */
+.ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.nf { color: #00F } /* Name.Function */
+.nl { color: #767600 } /* Name.Label */
+.nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.w { color: #BBB } /* Text.Whitespace */
+.mb { color: #666 } /* Literal.Number.Bin */
+.mf { color: #666 } /* Literal.Number.Float */
+.mh { color: #666 } /* Literal.Number.Hex */
+.mi { color: #666 } /* Literal.Number.Integer */
+.mo { color: #666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #A45A77 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #00F } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666 } /* Literal.Number.Integer.Long */
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Jason Connor</a>
+        </nav>
+    </header>
+    <main>
+        <p class="p" style="max-width: 70ch"><a href="index.html">← Return to homepage</a></p>
+        <h1 class="h1">Old-School Vim as an IDE</h1>
+<h2 class="h2">Overview</h2>
+<p class="p" style="max-width: 70ch">I use classic, old-school <a href="https://www.vim.org">Vim</a> as my main editor and IDE.</p>
+<p class="p" style="max-width: 70ch">In a world of GUI IDEs and even more &quot;modern&quot; off-shoots of Vim itself, I continue to stick with original Vim for a few very good reasons.</p>
+<ol class="ol"><li class="li">It's a CLI tool, and I believe in using CLI tools because they promote understanding of the tools themselves.</li>
+<li class="li">It has very powerful integrations with other CLI tools.</li>
+<li class="li">I've used it, well, for my entire career.</li>
+<li class="li">Setup correctly, it possesses all the same capabilities of any other IDE.</li>
+</ol>
+<p class="p" style="max-width: 70ch">Here, I'm going to give a brief overview of the core set of plugins that I use to make an IDE out of VIM, what they do and why I chose them.</p>
+<h2 class="h2">Background</h2>
+<p class="p" style="max-width: 70ch">I don't want to bore you too much, but an overview of my mindset is probably important enough that I'll share what I was thinking when I created my most recent setup.</p>
+<ol class="ol"><li class="li">Vim is generally good enough as it is, and I want to leverage as much of the built-in functionality as possible.</li>
+<li class="li">There are several, long-lasting and well-maintained, plugins that augment Vim's built in functionality and I want to use those as much as possible.</li>
+<li class="li">I want to build it around a small, but powerful, set of plugins that will be helpful for general development. Preferably that'll play nicely together.</li>
+</ol>
+<p class="p" style="max-width: 70ch">The functionality I was looking for:</p>
+<ul class="ul"><li class="li">LSP support</li>
+<li class="li">Code completion</li>
+<li class="li">Code navigation</li>
+<li class="li">Git support</li>
+<li class="li">Fuzzy search</li>
+<li class="li">Attractive and informative</li>
+</ul>
+<p class="p" style="max-width: 70ch">It's generally what most modern IDEs offer. I'm electing not to go into debugging or AI coding assistance here as they're really subjects unto themselves.</p>
+<h2 class="h2">The Plugins</h2>
+<h3 class="h3">Management</h3>
+<p class="p" style="max-width: 70ch">First plugin I chose is junegunn's <a href="https://junegunn.github.io/vim-plug">vim-plug</a> plugin manager. It's popular has a straight-forward interface. It also supports several nice features, like post-install actions and filetype-based lazy loading.</p>
+<pre><code class="language-vim"><div class="highlight"><pre><span></span><span class="c">&quot; https://junegunn.github.io/vim-plug</span>
+<span class="k">function</span><span class="p">!</span> CheckAndDownloadPluginManager<span class="p">()</span>
+    <span class="k">let</span> plugin_file <span class="p">=</span> expand<span class="p">(</span><span class="s1">&#39;~/.vim/autoload/plug.vim&#39;</span><span class="p">)</span>
+    <span class="k">let</span> url <span class="p">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&#39;</span>
+
+    <span class="k">if</span> <span class="p">!</span>filereadable<span class="p">(</span>plugin_file<span class="p">)</span>
+        <span class="k">let</span> command <span class="p">=</span> <span class="s1">&#39;curl -fLo &#39;</span> . plugin_file . <span class="s1">&#39; --create-dirs &#39;</span> . url
+        <span class="k">call</span> system<span class="p">(</span>command<span class="p">)</span>
+
+        <span class="k">call</span> execute<span class="p">(</span><span class="s1">&#39;source &#39;</span> . plugin_file<span class="p">)</span>
+
+        echohl WarningMsg
+        <span class="k">echom</span> <span class="s2">&quot;Plug plugin manager not found. Downloading from: &quot;</span> . url
+        echohl None
+    <span class="k">endif</span>
+<span class="k">endfunction</span>
+
+<span class="k">call</span> CheckAndDownloadPluginManager<span class="p">()</span>
+</pre></div>
+</code></pre>
+<h3 class="h3">LSP Support</h3>
+<p class="p" style="max-width: 70ch">LSPs are great. They are what really give an IDE its superpowers. Code navigation, completion and even outlines. Problem diagnosis and formatting. LSP support is really what turns an editor into an IDE.</p>
+<p class="p" style="max-width: 70ch">For LSP support I went with prabirshrestha's <a href="https://github.com/prabirshrestha/vim-lsp">vim-lsp</a> and the complimentary <a href="https://github.com/mattn/vim-lsp-settings">vim-lsp-settings</a>. The former, vim-lsp, has full support for the language server protocol, including some of the experimental features. It's older, but very stable.</p>
+<pre><code class="language-vim"><div class="highlight"><pre><span></span><span class="c">&quot; language server plugins</span>
+Plug <span class="s1">&#39;https://github.com/prabirshrestha/vim-lsp&#39;</span>
+Plug <span class="s1">&#39;https://github.com/mattn/vim-lsp-settings&#39;</span>
+</pre></div>
+</code></pre>
+<p class="p" style="max-width: 70ch">The settings plugin has a rather clunky interface for installing and managing language protocol servers, but it does have killer feature: the ability to detect and automatically use any of its supported servers if they are installed in your path.</p>
+<p class="p" style="max-width: 70ch">So instead of installing and maintaining servers with the plugin, I use brew (mostly) or other package managers (rarely, but not never): pipx, npm, go, to install and manage my language protocol servers. Which is much more convenient for me as I'm already using them for all of my other third-party software anyway.</p>
+<h3 class="h3">Code Completion</h3>
+<p class="p" style="max-width: 70ch">For completions, I used some more of prabirshrestha's plugins, <a href="https://github.com/prabirshrestha/asyncomplete.vim">asyncomplete.vim</a>, <a href="https://github.com/prabirshrestha/asyncomplete-lsp.vim">asyncomplete-lsp.vim</a> and <a href="https://github.com/prabirshrestha/asyncomplete-file.vim">asyncomplete-file.com</a>.</p>
+<pre><code class="language-vim"><div class="highlight"><pre><span></span><span class="c">&quot; autocomplete plugins</span>
+Plug <span class="s1">&#39;https://github.com/prabirshrestha/asyncomplete.vim&#39;</span>
+Plug <span class="s1">&#39;https://github.com/prabirshrestha/asyncomplete-lsp.vim&#39;</span>
+Plug <span class="s1">&#39;https://github.com/prabirshrestha/asyncomplete-file.vim&#39;</span>
+</pre></div>
+</code></pre>
+<p class="p" style="max-width: 70ch">The first provides an efficient, asynchronous, framework for completions. While the second two tie LSP support and file system support into it respectively. This provides a very complete list of viable completions that come up as I type or use <code>&lt;C-N&gt; | &lt;C-P&gt;</code>.</p>
+<h3 class="h3">Code Navigation</h3>
+<p class="p" style="max-width: 70ch">I round out code navigation with in-file tag list and navigation with the venerable, but still awesome, <a href="https://github.com/preservim/tagbar">tagbar</a>. Anything maintained under the <a href="https://github.com/preservim">Preserve Vim</a> project on GitHub is old AF. But I actually prefer its unassuming presentation of code tags. And while it's fallback to the <code>ctags</code> command isn't very efficient, with a little Vim magic, we can wire it up to the current LSP and use it to generate tags efficiently.</p>
+<pre><code class="language-vim"><div class="highlight"><pre><span></span>Plug <span class="s1">&#39;https://github.com/preservim/tagbar&#39;</span>
+</pre></div>
+</code></pre>
+<p class="p" style="max-width: 70ch">Relatedly, I opted not to use a third-party plugin for file navigation and instead use the built-in <code>netrw</code> plugin. With a little scripting I have it behaving the way I like, and its esthetic matches tagbar's (or maybe the other way around).</p>
+<p class="p" style="max-width: 70ch"><img src="assets/Screenshot-lsp-cc-tb.png" alt="Screenshot of code completion and tagbar using LSP support" /></p>
+<h3 class="h3">Git Support</h3>
+<p class="p" style="max-width: 70ch">For git support, I use a number of classics. Turning to airblade, tpope and junegunn.</p>
+<pre><code class="language-vim"><div class="highlight"><pre><span></span><span class="c">&quot; git/github integration plugins</span>
+Plug <span class="s1">&#39;https://github.com/airblade/vim-gitgutter&#39;</span>
+Plug <span class="s1">&#39;https://github.com/junegunn/gv.vim&#39;</span>
+Plug <span class="s1">&#39;https://github.com/tpope/vim-fugitive&#39;</span>
+Plug <span class="s1">&#39;https://github.com/tpope/vim-rhubarb&#39;</span>
+</pre></div>
+</code></pre>
+<p class="p" style="max-width: 70ch">The most useful to me, is <a href="https://github.com/airblade/vim-gitgutter">vim-gitgutter</a>. Not only does it populate vim's signcolumn, letting you know at a glance what lines have been added, removed or modified, it also provides a number of handy <code>&lt;leader&gt;</code>-based shortcuts to quickly manage and review changes in your file.</p>
+<p class="p" style="max-width: 70ch">The remaining plugins: <a href="https://github.com/junegunn/gv.vim">gv.vim</a>, <a href="https://github.com/tpope/vim-fugitive">vim-fugitive</a> and <a href="https://github.com/tpope/vim-rhubarb">vim-rhubard</a> I use for digging deeper and sharing links.</p>
+<h3 class="h3">Fuzzy Search</h3>
+<p class="p" style="max-width: 70ch">For fuzzy search integration I use junegunn's <a href="https://github.com/junegunn/fzf">fzf</a></p>
+<pre><code class="language-vim"><div class="highlight"><pre><span></span><span class="c">&quot; search plugins</span>
+Plug <span class="s1">&#39;https://github.com/junegunn/fzf&#39;</span><span class="p">,</span> { <span class="s1">&#39;do&#39;</span>: { <span class="p">-&gt;</span> fzf#install<span class="p">()</span> } }
+Plug <span class="s1">&#39;https://github.com/junegunn/fzf.vim&#39;</span>
+</pre></div>
+</code></pre>
+<p class="p" style="max-width: 70ch">I also install <a href="https://github.com/ggreer/the_silver_searcher">the_silver_searcher</a> and <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> CLI tools to augment <code>fzf</code> support for searching into files.</p>
+<p class="p" style="max-width: 70ch">Between the two of them, I prefer the_silver_searcher, <code>ag</code>. I don't really have a good reason other than I like it's output format better.</p>
+<p class="p" style="max-width: 70ch"><img src="assets/Screenshot-fzf.png" alt="Screenshot showing fzf support" /></p>
+<h3 class="h3">Appearance</h3>
+<p class="p" style="max-width: 70ch">I like my personal Vim esthetic, which I can only describe as old-school-clunky. That said, I like it to be attractive, and I like it to be informative at a glance. I should know what file I'm editing, what line I'm on, what function I'm in. If there are any changes in the file or issues.</p>
+<p class="p" style="max-width: 70ch">I'm going to tackle the second part first. I went with <a href=".html">vim-airline</a> because it integrates so nicely with all the plugins I've presented so far and displays succinct information that I find useful at a glance. I add <a href=".html">vim-airline-themes</a> and <a href=".html">vim-devicons</a> to it because it makes it pretty too.</p>
+<p class="p" style="max-width: 70ch">I got lucky with my colorscheme: I've used solarized for almost a decade now, and I love it. I have a lot less eyestrain with it than with other themes, and I've always liked lighter themes during the day.</p>
+<p class="p" style="max-width: 70ch">It's only been recently that I've started using the OS-level auto-switching from light to dark and this is why I say I got lucky. Vim has always had support for letting the theme react to the <code>background</code> setting. Letting the colors change when it's set to <code>light</code> vs <code>dark</code>.</p>
+<pre><code class="language-vim"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nb">background</span><span class="p">=</span><span class="nb">light</span> <span class="c">&quot; or dark</span>
+</pre></div>
+</code></pre>
+<p class="p" style="max-width: 70ch">But very few themes actually take advantage of this feature. And here's the cool part: if you <em>don't</em> explicitly set the background, Vim will try to glean it from the environment (i.e. the terminal emulator), and if you have that setup to auto-switch with your OS, Vim will &quot;do the right thing&quot;.</p>
+<p class="p" style="max-width: 70ch">But <em>only</em> if your colorscheme supports it! And the solarized colorscheme (and for that matter, airline solarized theme) are plugins that support the automatic change.</p>
+<pre><code class="language-vim"><div class="highlight"><pre><span></span><span class="c">&quot; appearance plugins</span>
+Plug <span class="s1">&#39;https://github.com/vim-airline/vim-airline&#39;</span>
+Plug <span class="s1">&#39;https://github.com/vim-airline/vim-airline-themes&#39;</span>
+Plug <span class="s1">&#39;https://github.com/ryanoasis/vim-devicons&#39;</span>
+Plug <span class="s1">&#39;https://github.com/lifepillar/vim-solarized8&#39;</span>
+</pre></div>
+</code></pre>
+<p class="p" style="max-width: 70ch"><img src="assets/Screenshot-light.png" alt="Screenshot of solarized light" />
+<img src="assets/Screenshot-dark.png" alt="Screenshot of solarized dark" /></p>
+<h3 class="h3">Honorable Mentions</h3>
+<p class="p" style="max-width: 70ch">There are a few remaining plugins that I constantly use that are really just more idiomatic of me and how I like to use Vim and don't really directly fit into the requirements I set forth for myself, but that are fundamental enough that I'll mention them here:</p>
+<ul class="ul"><li class="li"><a href="https://github.com/jiangmiao/auto-pairs">auto-pairs</a> - auto inserts pairs of quotes, brackets, etc.</li>
+<li class="li"><a href="https://github.com/jlanzarotta/bufexplorer">bufexplorer</a> - simple and convenient buffer management</li>
+<li class="li"><a href="https://github.com/tpope/vim-commentary">vim-commentary</a> - convenient keybindings for commenting/uncommenting code</li>
+<li class="li"><a href="https://github.com/tpope/vim-obsession">vim-obsession</a> - actually usable session management</li>
+<li class="li"><a href="https://github.com/junegunn/vim-slash">vim-slash</a> - better behavior for vim's built-in search</li>
+</ul>
+<h2 class="h2">Wrap Up</h2>
+<p class="p" style="max-width: 70ch">This doesn't really begin to round out the whole picture of my setup. I didn't touch on debugging, for which I use <a href="https://github.com/puremourning/vimspector">vimspector</a> or AI assistance, for which I use <a href="https://github.com/Exafunction/codeium.vim">codeium.vim</a>, nor any of the language-specific plugins that I use for developing in Python, Go and SQL.  And I haven't even started to think about how to distill my personal vim settings, auto commands, user-defined commands and keybindings.</p>
+<p class="p" style="max-width: 70ch">But what I do have is a potent combination of plugins that create a very effective base for development, that play nicely together, are super stable and together add-up to make my preferred editor, Vim, into my preferred IDE.</p>
+<p class="p" style="max-width: 70ch">I can't thank <a href="https://github.com/prabirshrestha">prabirshrestha</a>, <a href="https://github.com/junegunn">junegunn</a> and <a href="https://github.com/tpope">tpope</a> whose work provides the majority of the basis of this powerful setup. And all the other plugin authors that have shared their work with the world. I have used your excellent software every single day for years already and will continue for years to come.</p>
+<p class="p" style="max-width: 70ch">And a special thank you to the <a href="https://github.com/preservim">Preserve Vim</a> project, for all that you do!</p>
+
+        <p class="p" style="max-width: 70ch"><a href="index.html">← Return to homepage</a></p>
+    </main>
+    <footer>
+        <small>© 2025 Jason Connor • Built with <a href="https://picocss.com">Pico CSS</a></small>
+    </footer>
+</body>
+</html>
