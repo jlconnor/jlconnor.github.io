@@ -154,8 +154,8 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
     Returns:
         str: The HTML content as a string.
     """
-    nav_link = ''
-    if title != 'index':
+    nav_link = ""
+    if title != "index":
         nav_link = '<p class="p" style="max-width: 70ch"><a href="index.html">← Return to homepage</a></p>'
     # pygments formatter canned-styles:
     # 'abap', 'algol', 'algol_nu', 'arduino', 'autumn', 'bw', 'borland',
@@ -166,7 +166,7 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
     # 'paraiso-dark', 'paraiso-light', 'pastie', 'perldoc', 'rainbow_dash', 'rrt',
     # 'sas', 'solarized-dark', 'solarized-light', 'staroffice', 'stata-dark', 'stata-light',
     # 'tango', 'trac', 'vim', 'vs', 'xcode', 'zenburn'
-    formatter = HtmlFormatter(style="default")
+    formatter = HtmlFormatter(style="friendly")
     markdown = mistune.create_markdown(renderer=PicoRenderer(formatter))  # type: ignore
     html_body = markdown(markdown_content)
     # pico.css classes: https://picocss.com/docs/classless
@@ -177,7 +177,7 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
         html_body=html_body,
         css_url=css_url,
         pygments_style=pygments_style,
-        nav_link=nav_link
+        nav_link=nav_link,
     )
     return html_content
 
