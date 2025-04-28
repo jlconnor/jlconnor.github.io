@@ -84,25 +84,6 @@ class PicoRenderer(mistune.HTMLRenderer):
 
     Attributes:
         formatter (HtmlFormatter): An instance of HtmlFormatter used for syntax highlighting in code blocks.
-
-    Methods:
-        heading(text: str, level: int, **attrs: Any) -> str:
-            Renders a heading element with a specified level and text.
-
-        paragraph(text: str) -> str:
-            Renders a paragraph element with the given text.
-
-        list(text: str, ordered: bool, **attrs: Any) -> str:
-            Renders an ordered or unordered list based on the 'ordered' flag.
-
-        list_item(text: str) -> str:
-            Renders a list item element with the given text.
-
-        block_code(code: str, info: str | None = None) -> str:
-            Renders a block of code with syntax highlighting based on the specified language.
-
-        link(text: str, url: str | None, title: str | None = None) -> str:
-            Renders a hyperlink element with the given text, URL, and optional title.
     """
 
     def __init__(self, formatter: HtmlFormatter) -> None:
@@ -126,6 +107,7 @@ class PicoRenderer(mistune.HTMLRenderer):
         language = info.split(None, 1)[0] if info else "text"
         lexer = get_lexer_by_name(language)
         highlighted_code = highlight(code, lexer, self.formatter)
+
         return (
             f'<pre><code class="language-{language}">{highlighted_code}</code></pre>\n'
         )
@@ -136,10 +118,13 @@ class PicoRenderer(mistune.HTMLRenderer):
             url = url[:-3] + ".html"
         elif not url.startswith(("http://", "https://", "#", "/")) and "." not in url:
             url = url + ".html"
+
         if text is None:
             text = url
+
         if title is not None:
             return f'<a href="{url}" title="{title}">{text}</a>'
+
         return f'<a href="{url}">{text}</a>'
 
 
@@ -157,18 +142,12 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
     nav_link = ""
     if title != "index":
         nav_link = '<p class="p" style="max-width: 70ch"><a href="index.html">← Return to homepage</a></p>'
-    # pygments formatter canned-styles:
-    # 'abap', 'algol', 'algol_nu', 'arduino', 'autumn', 'bw', 'borland',
-    # 'coffee', 'colorful', 'default', 'dracula', 'emacs', 'friendly_grayscale',
-    # 'friendly', 'fruity', 'github-dark', 'gruvbox-dark', 'gruvbox-light',
-    # 'igor', 'inkpot', 'lightbulb', 'lilypond', 'lovelace', 'manni', 'material',
-    # 'monokai', 'murphy', 'native', 'nord-darker', 'nord', 'one-dark',
-    # 'paraiso-dark', 'paraiso-light', 'pastie', 'perldoc', 'rainbow_dash', 'rrt',
-    # 'sas', 'solarized-dark', 'solarized-light', 'staroffice', 'stata-dark', 'stata-light',
-    # 'tango', 'trac', 'vim', 'vs', 'xcode', 'zenburn'
+
+    # pygments built-in styles: https://pygments.org/styles/
     formatter = HtmlFormatter(style="friendly")
     markdown = mistune.create_markdown(renderer=PicoRenderer(formatter))  # type: ignore
     html_body = markdown(markdown_content)
+
     # pico.css classes: https://picocss.com/docs/classless
     css_url = "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
     pygments_style = formatter.get_style_defs()
@@ -179,6 +158,7 @@ def convert_markdown_to_html(markdown_content: str, title: str) -> str:
         pygments_style=pygments_style,
         nav_link=nav_link,
     )
+
     return html_content
 
 
@@ -195,29 +175,34 @@ def process_markdown_files(input_directory: str, output_directory: str) -> None:
         None
     """
     for root, _, files in os.walk(input_directory):
-        rel_path = os.path.relpath(root, input_directory)
-        output_subdir = os.path.join(output_directory, rel_path)
-        os.makedirs(output_subdir, exist_ok=True)
-        for filename in files:
-            input_path = os.path.join(root, filename)
-            output_path = os.path.join(output_subdir, filename)
-            if filename.endswith(".md"):
-                output_path = output_path.replace(".md", ".html")
+        relative_path = os.path.relpath(root, input_directory)
+        output_dir = os.path.join(output_directory, relative_path)
+        os.makedirs(output_dir, exist_ok=True)
+
+        for f in files:
+            input_path = os.path.join(root, f)
+            output_path = os.path.join(output_dir, f)
+
+            if f.endswith(".md"):
                 with open(input_path, "r", encoding="utf-8") as md_file:
-                    markdown_content = md_file.read()
-                    if not markdown_content.strip():
-                        print(
-                            f"Skipping empty file: {os.path.join(rel_path, filename)}"
-                        )
-                        continue
-                title = os.path.splitext(filename)[0]
-                html_content = convert_markdown_to_html(markdown_content, title=title)
+                    md_content = md_file.read()
+
+                if not md_content.strip():
+                    print(f"Skipping empty file: {os.path.join(relative_path, f)}")
+                    continue
+
+                output_path = output_path.removesuffix(".md") + ".html"
+                title = os.path.splitext(f)[0]
+                html_content = convert_markdown_to_html(md_content, title=title)
+
                 with open(output_path, "w", encoding="utf-8") as html_file:
-                    _ = html_file.write(html_content)
-                print(f"Converted {os.path.join(rel_path, filename)} to HTML.")
+                    html_file.write(html_content)
+
+                print(f"Converted {os.path.join(relative_path, f)} to HTML.")
+
             else:
                 shutil.copy2(input_path, output_path)
-                print(f"Copied {os.path.join(rel_path, filename)} to {output_path}.")
+                print(f"Copied {os.path.join(relative_path, f)} to {output_path}.")
 
 
 def main():
@@ -232,8 +217,8 @@ def main():
     parser.add_argument(
         "output_directory", type=str, help="The output directory to save HTML files."
     )
-    args = parser.parse_args()
 
+    args = parser.parse_args()
     process_markdown_files(args.input_directory, args.output_directory)
 
 
